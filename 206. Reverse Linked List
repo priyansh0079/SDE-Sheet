@@ -1,0 +1,40 @@
+# S.C - O(n)
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        vector<int> v;
+        ListNode* temp = head;
+        
+        while(temp!= NULL){
+            v.push_back(temp->val);
+            temp = temp->next;
+        }
+        
+        temp = head;
+        for(int i=v.size()-1;i>=0;i--){
+            temp->val = v[i];
+            temp = temp->next;
+        }
+        return head;
+    }
+};
+
+
+# S.C - O(1)
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* curr = head;
+        ListNode* prev = NULL;
+        
+        while(head!=NULL){
+            head = head->next;
+            curr->next = prev;
+            prev = curr;
+            curr = head;
+        }
+        return prev;
+    }
+};
